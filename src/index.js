@@ -1,9 +1,10 @@
-import {UICorePlugin, Styler, Events, $} from 'clappr'
-import pipIcon from './icons/pip.svg'
+import {UICorePlugin, Styler, Events, template} from '@clappr/core'
+import pipIcon from './icons/pip.html'
 
 export default class PIPPlugin extends UICorePlugin {
   get name() { return 'pip-plugin' }
   get tagName() { return 'button' }
+  get template() { return template(pipIcon) }
   
   get attributes() {
     return {
@@ -13,13 +14,12 @@ export default class PIPPlugin extends UICorePlugin {
 
   constructor(core) {
     super(core)
-    this._pipSupported = false
+    this._pipSupported = true
     this._currentPlayback = null
     this.$el.addClass("media-control-button media-control-icon").css({
       float: "right",
       height: "100%"
-    }).append(pipIcon)
-    
+    })
     this.$el.click(() => {
       var video = this._playback.el
       video.webkitSetPresentationMode(video.webkitPresentationMode === "picture-in-picture" ? "inline" : "picture-in-picture")
@@ -27,6 +27,11 @@ export default class PIPPlugin extends UICorePlugin {
   }
 
   bindEvents() {
+    this.listenToOnce(this.core, Events.CORE_READY, this.init)
+  }
+
+  _bindEvents() {
+    this.container = this.core.getCurrentContainer()
     this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_RENDERED, this._init)
     this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_CONTAINERCHANGED, this._onContainerChanged)
   }
@@ -51,6 +56,10 @@ export default class PIPPlugin extends UICorePlugin {
     this._pipSupported = el && el.nodeName.toLowerCase() === "video" && el.webkitSupportsPresentationMode && typeof el.webkitSetPresentationMode === "function"
   }
 
+  init() {
+    this._bindEvents()
+  }
+
   _init() {
     this._updatePlayback()
     this._checkPipSupport()
@@ -65,5 +74,10 @@ export default class PIPPlugin extends UICorePlugin {
     else {
       this.$el.hide()
     }
+  }
+
+  render() {
+    this.$el.html(this.template())
+    return this
   }
 }
