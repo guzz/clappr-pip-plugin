@@ -22,7 +22,7 @@ var PIPPlugin = /*#__PURE__*/function (_UICorePlugin) {
     _classCallCheck(this, PIPPlugin);
 
     _this = _super.call(this, core);
-    _this._pipSupported = true;
+    _this._pipSupported = false;
     _this._currentPlayback = null;
 
     _this.$el.addClass("media-control-button media-control-icon").css({
@@ -32,7 +32,12 @@ var PIPPlugin = /*#__PURE__*/function (_UICorePlugin) {
 
     _this.$el.click(function () {
       var video = _this._playback.el;
-      video.webkitSetPresentationMode(video.webkitPresentationMode === "picture-in-picture" ? "inline" : "picture-in-picture");
+
+      if (!document.pictureInPictureElement) {
+        video.requestPictureInPicture();
+      } else {
+        document.exitPictureInPicture();
+      }
     });
 
     return _this;
@@ -97,7 +102,7 @@ var PIPPlugin = /*#__PURE__*/function (_UICorePlugin) {
     key: "_checkPipSupport",
     value: function _checkPipSupport() {
       var el = this._playback.el;
-      this._pipSupported = el && el.nodeName.toLowerCase() === "video" && el.webkitSupportsPresentationMode && typeof el.webkitSetPresentationMode === "function";
+      this._pipSupported = el && el.nodeName.toLowerCase() === "video" && (document.pictureInPictureEnabled || !el.disablePictureInPicture);
     }
   }, {
     key: "init",

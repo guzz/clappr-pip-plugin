@@ -1,5 +1,5 @@
 {
-  "name": "clappr-pip-plugin",
+  "name": "@guzzj/clappr-pip-plugin",
   "version": "2.0.1",
   "description": "A plugin for clappr which adds support for picture-in-picture on devices which support it.",
   "source": "src/index.js",
@@ -21,7 +21,10 @@
   },
   "author": "Thomas Jenkinson <tjcode@outlook.com>",
   "license": "MIT",
-  "repository": "tjenkinson/clappr-pip-plugin",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:guzz/clappr-pip-plugin.git"
+  },
   "peerDependencies": {
     "@clappr/core": "^0.4.18"
   },

@@ -14,7 +14,7 @@ export default class PIPPlugin extends UICorePlugin {
 
   constructor(core) {
     super(core)
-    this._pipSupported = true
+    this._pipSupported = false
     this._currentPlayback = null
     this.$el.addClass("media-control-button media-control-icon").css({
       float: "right",
@@ -22,7 +22,11 @@ export default class PIPPlugin extends UICorePlugin {
     })
     this.$el.click(() => {
       var video = this._playback.el
-      video.webkitSetPresentationMode(video.webkitPresentationMode === "picture-in-picture" ? "inline" : "picture-in-picture")
+      if (!document.pictureInPictureElement) {
+        video.requestPictureInPicture()
+      } else {
+        document.exitPictureInPicture()
+      }
     })
   }
 
@@ -53,7 +57,7 @@ export default class PIPPlugin extends UICorePlugin {
 
   _checkPipSupport() {
     var el = this._playback.el
-    this._pipSupported = el && el.nodeName.toLowerCase() === "video" && el.webkitSupportsPresentationMode && typeof el.webkitSetPresentationMode === "function"
+    this._pipSupported = el && el.nodeName.toLowerCase() === "video" && (document.pictureInPictureEnabled || !el.disablePictureInPicture)
   }
 
   init() {
