@@ -1,6 +1,6 @@
 {
   "name": "@guzzj/clappr-pip-plugin",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A plugin for clappr which adds support for picture-in-picture on devices which support it.",
   "source": "src/index.js",
   "main": "dist/clappr-pip-plugin.js",
@@ -26,13 +26,13 @@
     "url": "git@github.com:guzz/clappr-pip-plugin.git"
   },
   "peerDependencies": {
-    "@clappr/core": "^0.4.18"
+    "@guzzj/clappr-core": "^0.4.19"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
     "@babel/plugin-transform-runtime": "^7.13.15",
     "@babel/preset-env": "^7.13.15",
-    "@clappr/core": "^0.4.18",
+    "@guzzj/clappr-core": "^0.4.19",
     "@guzzj/clappr-stats-plugin": "^0.2.0",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^18.0.0",

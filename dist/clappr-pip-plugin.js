@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@clappr/core')) :
-  typeof define === 'function' && define.amd ? define(['@clappr/core'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@guzzj/clappr-core')) :
+  typeof define === 'function' && define.amd ? define(['@guzzj/clappr-core'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.PIPPlugin = factory(global.Clappr));
-}(this, (function (core) { 'use strict';
+}(this, (function (clapprCore) { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -152,7 +152,7 @@
     }, {
       key: "template",
       get: function get() {
-        return core.template(pipIcon);
+        return clapprCore.template(pipIcon);
       }
     }, {
       key: "attributes",
@@ -164,14 +164,14 @@
     }, {
       key: "bindEvents",
       value: function bindEvents() {
-        this.listenToOnce(this.core, core.Events.CORE_READY, this.init);
+        this.listenToOnce(this.core, clapprCore.Events.CORE_READY, this.init);
       }
     }, {
       key: "_bindEvents",
       value: function _bindEvents() {
         this.container = this.core.getCurrentContainer();
-        this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_RENDERED, this._init);
-        this.listenTo(this.core.mediaControl, core.Events.MEDIACONTROL_CONTAINERCHANGED, this._onContainerChanged);
+        this.listenTo(this.core.mediaControl, clapprCore.Events.MEDIACONTROL_RENDERED, this._init);
+        this.listenTo(this.core.mediaControl, clapprCore.Events.MEDIACONTROL_CONTAINERCHANGED, this._onContainerChanged);
       }
     }, {
       key: "_onContainerChanged",
@@ -234,7 +234,7 @@
     }]);
 
     return PIPPlugin;
-  }(core.UICorePlugin);
+  }(clapprCore.UICorePlugin);
 
   return PIPPlugin;
 

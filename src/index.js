@@ -1,4 +1,4 @@
-import {UICorePlugin, Styler, Events, template} from '@clappr/core'
+import {UICorePlugin, Styler, Events, template} from '@guzzj/clappr-core'
 import pipIcon from './icons/pip.html'
 
 export default class PIPPlugin extends UICorePlugin {

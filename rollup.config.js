@@ -27,7 +27,7 @@ const plugins = [
 const mainBundle = {
   input: 'src/index.js',
   external: [
-    '@clappr/core'
+    '@guzzj/clappr-core'
   ],
   output: [
     {
@@ -35,7 +35,7 @@ const mainBundle = {
       file: pkg.main,
       format: 'umd',
       globals: {
-        '@clappr/core': 'Clappr'
+        '@guzzj/clappr-core': 'Clappr'
       },
     },
     !!process.env.MINIMIZE && {
@@ -43,7 +43,7 @@ const mainBundle = {
       file: 'dist/clappr-pip-plugin.min.js',
       format: 'umd',
       globals: {
-        '@clappr/core': 'Clappr'
+        '@guzzj/clappr-core': 'Clappr'
       },
       plugins: terser(),
     },
@@ -54,7 +54,7 @@ const mainBundle = {
 const esmBundle = {
   input: 'src/index.js',
   external: [
-    '@clappr/core',
+    '@guzzj/clappr-core',
     /@babel\/runtime/
   ],
   output: {
@@ -62,7 +62,7 @@ const esmBundle = {
     file: pkg.module,
     format: 'esm',
     globals: {
-      '@clappr/core': 'Clappr'
+      '@guzzj/clappr-core': 'Clappr'
     },
   },
   plugins: [

@@ -3,7 +3,7 @@ import _createClass from '@babel/runtime/helpers/createClass';
 import _inherits from '@babel/runtime/helpers/inherits';
 import _possibleConstructorReturn from '@babel/runtime/helpers/possibleConstructorReturn';
 import _getPrototypeOf from '@babel/runtime/helpers/getPrototypeOf';
-import { template, Events, UICorePlugin } from '@clappr/core';
+import { template, Events, UICorePlugin } from '@guzzj/clappr-core';
 
 var pipIcon = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"35px\" height=\"22px\" viewBox=\"0 0 35 22\" enable-background=\"new 0 0 35 22\" xml:space=\"preserve\">\n<rect x=\"0.5\" y=\"0.5\" fill=\"none\" stroke=\"#FFFFFF\" stroke-miterlimit=\"10\" width=\"34\" height=\"21\"/>\n<rect x=\"16.5\" y=\"11.5\" fill=\"#FFFFFF\" stroke=\"#FFFFFF\" stroke-miterlimit=\"10\" width=\"16\" height=\"8\"/>\n</svg>\n";
 
